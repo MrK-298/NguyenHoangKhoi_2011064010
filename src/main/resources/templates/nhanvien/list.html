@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Danh Sách Nhân Viên</title>
+  <th:block th:replace="layout::link-css"></th:block>
+</head>
+<body>
+<th:block th:replace="layout::header"></th:block>
+<form class="form-inline d-flex" th:action="@{/nhanviens/search}" method="get">
+  <input class="form-control flex-grow-1" type="search" name="searchText" placeholder="Search" aria-label="Search">
+  <button class="btn btn-outline-success flex-grow-1" type="submit">Search</button>
+</form>
+<div class="container">
+  <h1 th:text=${title}></h1>
+  <table class="table">
+    <tr>
+      <th>Mã Nhân Viên</th>
+      <th>Tên Nhân Viên</th>
+      <th>Giới tính</th>
+      <th>Nơi sinh</th>
+      <th>Tên phòng</th>
+      <th>Lương</th>
+      <th>Action</th>
+    </tr>
+    <tr th:each="nhanvien: ${nhanviens}">
+      <td th:text="${nhanvien.Ma_NV}"></td>
+      <td th:text="${nhanvien.Ten_NV}"></td>
+      <td>
+      <span th:if="${nhanvien.Phai == 'Nam'}">
+        <i class="fa fa-male"></i> <!-- Icon phái nam -->
+      </span>
+        <span th:if="${nhanvien.Phai == 'Nữ'}">
+        <i class="fa fa-female" style="color: pink;"></i> <!-- Icon phái nữ -->
+      </span>
+      </td>
+      <td th:text="${nhanvien.Noi_Sinh}"></td>
+      <td th:text="${nhanvien.PhongBan.Ten_Phong}"></td>
+      <td th:text="${nhanvien.Luong}"></td>
+      <td>
+        <a th:href="@{/nhanviens/edit/{id}(id=${nhanvien.Ma_NV})}"><i class="fas fa-pen" style="color: #2760b0;"></i></a>
+        <a th:href="@{/nhanviens/delete/{id}(id=${nhanvien.Ma_NV})}" onclick="return confirm('Are you sure about that?')"><i class="fas fa-trash" style="color: #2760b0;"></i></a>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<th:block th:replace="layout::footer"></th:block>
+</body>
+</html>
