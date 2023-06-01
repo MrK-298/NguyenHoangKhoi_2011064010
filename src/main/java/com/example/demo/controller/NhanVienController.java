@@ -5,6 +5,8 @@ import com.example.demo.services.NhanVienService;
 import com.example.demo.services.PhongBanService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PostAuthorize;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -62,7 +64,7 @@ public class NhanVienController {
         return "redirect:/nhanviens";
     }
     @GetMapping("edit/{id}")
-    public String editNhanVienForm(@PathVariable("Ma_NV")String id, Model model){
+    public String editNhanVienForm(@PathVariable("id")String id, Model model){
         NhanVien editNhanVien = nhanVienService.getNhanVienId(id);
         if (editNhanVien != null ){
             model.addAttribute("nhanvien",editNhanVien);
@@ -74,7 +76,7 @@ public class NhanVienController {
     }
 
     @PostMapping("edit/{id}")
-    public String editNhanVien(@PathVariable("Ma_NV")String id, @ModelAttribute("nhanvien") @Valid NhanVien editNhanVien, BindingResult result, Model model){
+    public String editNhanVien(@PathVariable("id")String id, @ModelAttribute("nhanvien") @Valid NhanVien editNhanVien, BindingResult result, Model model){
         if (result.hasErrors()){
             model.addAttribute("PhongBans", phongBanService.getAllPhongBan());
             return "nhanvien/edit";

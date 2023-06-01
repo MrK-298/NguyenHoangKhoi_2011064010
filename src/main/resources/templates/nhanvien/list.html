@@ -29,11 +29,12 @@
       <td th:text="${nhanvien.Ten_NV}"></td>
       <td>
       <span th:if="${nhanvien.Phai == 'Nam'}">
-        <i class="fa fa-male"></i> <!-- Icon phái nam -->
+        <i class="fa fa-male fa-lg"></i> <!-- Icon phái nam -->
       </span>
         <span th:if="${nhanvien.Phai == 'Nữ'}">
-        <i class="fa fa-female" style="color: pink;"></i> <!-- Icon phái nữ -->
+        <i class="fa fa-female fa-lg" style="color: pink;"></i> <!-- Icon phái nữ -->
       </span>
+        <span th:text="${nhanvien.Phai}"></span>
       </td>
       <td th:text="${nhanvien.Noi_Sinh}"></td>
       <td th:text="${nhanvien.PhongBan.Ten_Phong}"></td>
@@ -49,3 +50,17 @@
 <th:block th:replace="layout::footer"></th:block>
 </body>
 </html>
+<style>
+.table th,
+.table td {
+  border-right: 4px solid #dee2e6;
+}
+
+.table th:last-child,
+.table td:last-child {
+  border-right: none;
+}
+.fa-lg {
+  font-size: 20px;
+}
+</style>

@@ -13,15 +13,15 @@
     <input type="hidden" th:field="*{Ma_NV}">
     <div class="col-6 mb-3">
       <label class="form-label" for="Ten_NV">Tên NV</label>
-      <input type="text" class="form-control bg-white" id="Ten_NV" placeholder="Ten_NV" th:field="*{Ten_NV"}>
+      <input type="text" class="form-control bg-white" id="Ten_NV" placeholder="Ten_NV" th:field="*{Ten_NV}">
     </div>
     <div class="col-6 mb-3">
       <label class="form-label" for="Noi_Sinh">Nơi Sinh</label>
-      <input type="text" class="form-control bg-white" id="Noi_Sinh" placeholder="Noi_Sinh" th:field="Noi_Sinh">
+      <input type="text" class="form-control bg-white" id="Noi_Sinh" placeholder="Noi_Sinh" th:field="*{Noi_Sinh}">
     </div>
     <div class="col-6 mb-3">
       <label class="form-label" for="Phai">Phái</label>
-      <input type="text" class="form-control bg-white" id="Phai" placeholder="Phai" th:field="Phai">
+      <input type="text" class="form-control bg-white" id="Phai" placeholder="Phai" th:field="*{Phai}">
     </div>
     <div class="col-6 mb-3">
       <label class="form-label" for="Luong">Lương</label>
@@ -38,7 +38,7 @@
     <input type="submit" value="Save">
   </form>
   <br>
-  <a th:href="@{/nhanViens}">Back to list</a>
+  <a th:href="@{/nhanviens}">Back to list</a>
 </div>
 <th:block th:replace="layout :: footer"></th:block>
 </body>
